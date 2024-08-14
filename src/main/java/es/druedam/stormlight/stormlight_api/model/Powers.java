@@ -2,6 +2,8 @@ package es.druedam.stormlight.stormlight_api.model;
 
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 @Table
 public class Powers
@@ -19,4 +21,7 @@ public class Powers
     private String rules;
 
     private String effects;
+
+    @ManyToMany(mappedBy = "powers")
+    private Set<RadiantOrder> radiantOrders;
 }
