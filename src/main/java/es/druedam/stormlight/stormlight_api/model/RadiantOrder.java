@@ -1,21 +1,28 @@
 package es.druedam.stormlight.stormlight_api.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.List;
 import java.util.Set;
 
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table
+@Table(name = "radiant_orders")
+@Getter
+@Setter
+@Data
 public class RadiantOrder
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_radiant_order")
-    private int idRadiantOrder;
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idRadiantOrder;
+    @Column
     private String name;
-
+    @Column
     private String words;
 
     @ManyToMany
@@ -25,5 +32,6 @@ public class RadiantOrder
     private Set<Powers> powers;
 
     @OneToMany(mappedBy = "radiant_order")
+    @JsonIgnore
     private List<Character> characters;
 }

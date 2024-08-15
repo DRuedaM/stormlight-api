@@ -1,17 +1,23 @@
 package es.druedam.stormlight.stormlight_api.model;
 
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.Date;
 
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table
+@Table(name = "book")
+@Getter
+@Setter
+@Data
 public class Book
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
+    private Long id;
+    @Column
     private String name;
 
     @Column(name = "num_pages")

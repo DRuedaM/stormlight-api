@@ -9,21 +9,24 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "location")
+@Table(name = "race")
+@Getter
+@Setter
 @Data
-public class Location
+public class Race
 {
     @Id
-    @Column(name = "id_location")
+    @Column(name = "id_race")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idRace;
 
-    @Column(name = "place_name")
-    private String placeName;
+    @Column(name = "race_name")
+    private String raceName;
 
-    @OneToMany(mappedBy = "birthplace")
+    @Column(name = "race_description")
+    private String race_description;
+
+    @OneToMany(mappedBy = "race")
     @JsonIgnore
     private List<Character> characters;
-
-
 }
